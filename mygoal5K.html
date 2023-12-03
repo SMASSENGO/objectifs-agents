@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objectifs des Agents</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+            background-color: #f8f8f8;
+        }
+
+        .search-card {
+            max-width: 400px;
+            margin: auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .result-card {
+            max-width: 400px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="search-card">
+        <h1>Objectifs des Agents</h1>
+        <label for="agentName">Nom de l'Agent :</label>
+        <input type="text" id="agentName" placeholder="Entrez votre nom">
+        <button onclick="afficherObjectifs()">Afficher les Objectifs</button>
+    </div>
+
+    <div id="resultat" class="result-card"></div>
+
+    <script>
+        function afficherObjectifs() {
+            var agentName = encodeURIComponent(document.getElementById("agentName").value);
+
+            // Remplacez ces valeurs par les vrais objectifs pour chaque agent
+            var objectifs = {
+                "Hattie": {
+                    "Réseaux Sociaux": 100000,
+                    "Conception de Pages Web": 140000
+                },
+                "Igor": {
+                    "Réseaux Sociaux": 100000,
+                    "Conception de Pages Web": 140000
+                },
+                "Isaac": {
+                    "Réseaux Sociaux": 100000,
+                    "Conception de Pages Web": 140000
+                },
+                "Sage": {
+                    "Réseaux Sociaux": 100000,
+                    "Conception de Pages Web": 140000
+                }
+            };
+
+            var resultat = document.getElementById("resultat");
+            resultat.innerHTML = "";
+
+            if (objectifs.hasOwnProperty(agentName)) {
+                resultat.innerHTML += "<div class='result-card'>";
+                resultat.innerHTML += "<h2>Objectifs pour " + agentName + "</h2>";
+                resultat.innerHTML += "<p>Réseaux Sociaux: " + objectifs[agentName]["Réseaux Sociaux"] + " FCFA par semaine</p>";
+                resultat.innerHTML += "<p>Conception de Pages Web: " + objectifs[agentName]["Conception de Pages Web"] + " FCFA par semaine</p>";
+                resultat.innerHTML += "</div>";
+            } else {
+                resultat.innerHTML = "<div class='result-card'><p>Agent non trouvé.</p></div>";
+            }
+        }
+    </script>
+</body>
+</html>
